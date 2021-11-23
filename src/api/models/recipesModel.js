@@ -9,7 +9,7 @@ const createRecipe = async (recipe) => {
     return user.ops[0];
 };
 
-const getRecipes = async () => {
+const getRecipeList = async () => {
     const db = await connection();
     const recipeList = await db.collection(COLLECTION_DATA).find({}).toArray();
     return recipeList;
@@ -23,6 +23,6 @@ const getRecipeById = async (id) => {
 
 module.exports = {
     createRecipe,
-    getRecipes,
+    getRecipeList,
     getRecipeById
 };

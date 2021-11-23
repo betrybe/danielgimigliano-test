@@ -23,8 +23,8 @@ const createRecipe = async (newRecipe, authorization) => {
 };
 
 // busca todas as receitas no banco
-const getRecipes = async () => {
-    const recipes = await models.recipesModel.getRecipes();
+const getRecipeList = async () => {
+    const recipeList = await models.recipesModel.getRecipeList();
     return { status: HTTP_OK_STATUS, recipeList };
 };
 
@@ -40,6 +40,6 @@ const getRecipeById = async (id) => {
 
 module.exports = {
     createRecipe,
-    getRecipes,
+    getRecipeList,
     getRecipeById
 }
