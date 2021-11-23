@@ -2,6 +2,7 @@ const services = require('../services');
 
 // inclusão de nova receita
 // tem como requisitos : name, ingredients, preparation
+// precisa estar logado
 const createRecipe = async (req, res) => {
     const newRecipe = req.body;
     const { authorization } = req.headers;
@@ -12,6 +13,13 @@ const createRecipe = async (req, res) => {
     res.status(status).json({ recipe: includeRecipes });
 };
 
+// busca todas as receitas no banco
+const getRecipes = async (_req, res) => {
+    const { status, recipes } = await services.recipesService.getRecipes();
+    res.status(status).json(recipes);
+};
+
 module.exports = {
-    createRecipe
+    createRecipe,
+    getRecipes
 };
