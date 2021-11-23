@@ -10,7 +10,7 @@ const createUser = async (newUser) => {
 };
 
 // verificação já existe usuário
-const usersByEmail = async (email) => {
+const userByEmail = async (email) => {
     const db = await connection();
     let Email = null;
     Email = await db.collection(COLLECTION_NAME).findOne({ email });
@@ -19,5 +19,5 @@ const usersByEmail = async (email) => {
 
 module.exports = {
     createUser,
-    usersByEmail,
+    userByEmail,
 };
