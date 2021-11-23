@@ -15,11 +15,21 @@ const createRecipe = async (req, res) => {
 
 // busca todas as receitas no banco
 const getRecipes = async (_req, res) => {
-    const { status, recipes } = await services.recipesService.getRecipes();
-    res.status(status).json(recipes);
+    const { status, recipeList } = await services.recipesService.getRecipes();
+    res.status(status).json(recipeList);
+};
+
+// busca uma receita em específica
+// tem como requisitos : idRecipe
+const getRecipeById = async (req, res) => {
+    const { id } = req.params;
+    const { status, recipe, err } = await services.recipesService.getRecipeById(id);
+    if (err) return res.status(status).json({ message: err.message });
+    res.status(status).json(recipe);
 };
 
 module.exports = {
     createRecipe,
-    getRecipes
+    getRecipes,
+    getRecipeById
 };
