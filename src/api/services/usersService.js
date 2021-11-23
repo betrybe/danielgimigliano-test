@@ -15,10 +15,10 @@ const createUser = async (newUser, role = 'user') => {
     const user = newUser;
     user.role = role;
 
-    const addNewUser = await models.usersModel.createUser(user);
-    delete addNewUser.password;
+    const includeNewUser = await models.usersModel.createUser(user);
+    delete includeNewUser.password;
 
-    return { status: CREATED_STATUS, addNewUser };
+    return { status: CREATED_STATUS, includeNewUser };
 };
 
 module.exports = {

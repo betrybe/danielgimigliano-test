@@ -5,10 +5,10 @@ const services = require('../services');
 const createUser = async (req, res) => {
     const newUser = req.body;
     
-    const { status, err, addNewUser } = await services.usersService.createUser(newUser);
+    const { status, err, includeNewUser } = await services.usersService.createUser(newUser);
     if (err) return res.status(status).json({ message: err.message });
     
-    res.status(status).json({ user: addNewUser });
+    res.status(status).json({ user: includeNewUser });
 };
 
 module.exports = { 

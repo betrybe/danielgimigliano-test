@@ -1,11 +1,11 @@
 const connection = require('./connection');
 
-const COLLECTION_NAME = 'users';
+const COLLECTION_DATA = 'users';
 
 // adicionando usuário
 const createUser = async (newUser) => {
     const db = await connection();
-    const user = await db.collection(COLLECTION_NAME).insertOne(newUser);
+    const user = await db.collection(COLLECTION_DATA).insertOne(newUser);
     return user.ops[0];
 };
 
@@ -13,11 +13,11 @@ const createUser = async (newUser) => {
 const userByEmail = async (email) => {
     const db = await connection();
     let Email = null;
-    Email = await db.collection(COLLECTION_NAME).findOne({ email });
+    Email = await db.collection(COLLECTION_DATA).findOne({ email });
     return Email;
 };
 
 module.exports = {
     createUser,
-    userByEmail,
+    userByEmail
 };
