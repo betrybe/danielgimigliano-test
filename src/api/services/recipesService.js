@@ -38,8 +38,22 @@ const getRecipeById = async (id) => {
     return { status: HTTP_OK_STATUS, recipe };
 };
 
+// endpoint para edição de uma receita
+const updateRecipeById = async (id, recipe, authorization) => {
+    try {
+        const { status, err } = await tokenValidation(authorization);
+        if (err) return { status, err };
+    
+        const updateRecipe = await models.recipesModel.updateRecipeById(id, recipe);
+        return { status: HTTP_OK_STATUS, updateRecipe };
+    }catch (error) {
+        return REQUEST_INVALID_ENTRIES;
+    }
+};
+
 module.exports = {
     createRecipe,
     getRecipeList,
-    getRecipeById
+    getRecipeById,
+    updateRecipeById
 }

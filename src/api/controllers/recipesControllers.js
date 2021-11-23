@@ -1,7 +1,7 @@
 const services = require('../services');
 
 // inclusão de nova receita
-// tem como requisitos : name, ingredients, preparation
+// tem como requisitos : { name, ingredients, preparation }
 // precisa estar logado
 const createRecipe = async (req, res) => {
     const newRecipe = req.body;
@@ -28,8 +28,23 @@ const getRecipeById = async (req, res) => {
     res.status(status).json(recipe);
 };
 
+// endpoint para edição de uma receita
+// tem como requisitos : idRecipe, { name, ingredients, preparation }
+// precisa estar logado
+const updateRecipeById = async (req, res) => {
+    const { id } = req.params;
+    const recipe = req.body;
+    const { authorization } = req.headers;
+    
+    const { status, updateRecipe, err } = await services.recipesService.updateRecipeById(id, recipe, authorization);
+    
+    if (err) return res.status(status).json({ message: err.message });
+    res.status(status).json(updateRecipe);
+};
+
 module.exports = {
     createRecipe,
     getRecipeList,
-    getRecipeById
+    getRecipeById,
+    updateRecipeById
 };
