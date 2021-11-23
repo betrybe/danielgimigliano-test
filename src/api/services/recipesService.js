@@ -2,7 +2,7 @@ const { recipeValidation } = require('../schemas');
 const { tokenValidation } = require('./tokenValidation');
 const models = require('../models');
 
-const { CREATED_STATUS, REQUEST_INVALID_ENTRIES, HTTP_OK_STATUS, RECIPE_NOT_FOUND } = require('../helpers');
+const { CREATED_STATUS, REQUEST_INVALID_ENTRIES, HTTP_OK_STATUS, RECIPE_NOT_FOUND, NO_CONTENT } = require('../helpers');
 
 const { idValidation } = require('../schemas');
 
@@ -51,9 +51,20 @@ const updateRecipeById = async (id, recipe, authorization) => {
     }
 };
 
+// endpoint para a remoção de uma receita
+// TODO - implementar validação de usuário (admin/user)
+const deleteRecipe = async (id, authorization) => {
+    const { status, err } = await tokenValidation(authorization);
+    if (err) return { status, err };
+  
+    const deletedRecipe = await models.recipesModel.deleteRecipe(id);
+    if (!deletedRecipe) return { status: NO_CONTENT };
+};
+
 module.exports = {
     createRecipe,
     getRecipeList,
     getRecipeById,
-    updateRecipeById
+    updateRecipeById,
+    deleteRecipe
 }

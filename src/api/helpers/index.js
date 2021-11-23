@@ -4,6 +4,7 @@ const CREATED_STATUS = 201;
 const HTTP_UNAUTHORIZED_FIELDS = 401;
 const HTTP_OK_STATUS = 200;
 const HTTP_NOT_FOUND = 404;
+const NO_CONTENT = 204;
 
 const ENTRIES_ERROR = 'Invalid entries. Try again.';
 const CONFLICT_EMAIL_ERROR = 'Email already registered';
@@ -57,5 +58,6 @@ module.exports = {
     HTTP_OK_STATUS,
     MALFORMED_TOKEN_JWT,
     MISSING_AUTH_TOKEN,
-    RECIPE_NOT_FOUND
+    RECIPE_NOT_FOUND,
+    NO_CONTENT
 };

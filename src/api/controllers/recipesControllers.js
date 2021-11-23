@@ -23,8 +23,10 @@ const getRecipeList = async (_req, res) => {
 // tem como requisitos : idRecipe
 const getRecipeById = async (req, res) => {
     const { id } = req.params;
+    
     const { status, recipe, err } = await services.recipesService.getRecipeById(id);
     if (err) return res.status(status).json({ message: err.message });
+    
     res.status(status).json(recipe);
 };
 
@@ -37,14 +39,28 @@ const updateRecipeById = async (req, res) => {
     const { authorization } = req.headers;
     
     const { status, updateRecipe, err } = await services.recipesService.updateRecipeById(id, recipe, authorization);
-    
     if (err) return res.status(status).json({ message: err.message });
+    
     res.status(status).json(updateRecipe);
+};
+
+// endpoint para a remoção de uma receita
+// tem como requisitos : idRecipe
+// precisa estar logado
+const deleteRecipe = async (req, res) => {
+    const { id } = req.params;
+    const { authorization } = req.headers;
+  
+    const { status, err } = await services.recipesService.deleteRecipe(id, authorization);
+    if (err) return res.status(status).json({ message: err.message });
+    
+    res.status(status).json();
 };
 
 module.exports = {
     createRecipe,
     getRecipeList,
     getRecipeById,
-    updateRecipeById
+    updateRecipeById,
+    deleteRecipe
 };
