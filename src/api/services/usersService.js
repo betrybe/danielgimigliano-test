@@ -9,13 +9,13 @@ const createUser = async (newUser, role = 'user') => {
     const { error } = userValidation.validate(newUser);
     if (error) return REQUEST_INVALID_ENTRIES;
     
-    const emailExist = await models.userModel.userByEmail(email);
+    const emailExist = await models.usersModel.userByEmail(email);
     if (emailExist) return CONFLICT_EMAIL;
 
     const user = newUser;
     user.role = role;
 
-    const addNewUser = await models.userModel.createUser(user);
+    const addNewUser = await models.usersModel.createUser(user);
     delete addNewUser.password;
 
     return { status: CREATED_STATUS, addNewUser };

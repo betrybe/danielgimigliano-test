@@ -16,7 +16,7 @@ const login = async (register) => {
   const { error } = loginValidation.validate(register);
   if (error) return UNAUTHORIZED_EMPTY_FIELDS;
 
-  const userExist = await models.userModel.userByEmail(register.email);
+  const userExist = await models.usersModel.userByEmail(register.email);
   if (!userExist) return INVALID_UNAUTHORIZED_DATA;
 
   const token = sign({ data: userExist }, secret, jwtConfig);
