@@ -1,5 +1,6 @@
 const { recipeValidation } = require('../schemas');
 const { tokenValidation } = require('./tokenValidation');
+const { permissionValidation } = require('./permissionValidation');
 const models = require('../models');
 
 const { 
@@ -46,7 +47,7 @@ const getRecipeById = async (id) => {
 // edição de uma receita
 const updateRecipeById = async (id, recipe, authorization) => {
     try {
-        const { status, err } = await tokenValidation(authorization);
+        const { status, err } = await permissionValidation(id, authorization);
         if (err) return { status, err };
     
         const updateRecipe = await models.recipesModel.updateRecipeById(id, recipe);
@@ -57,19 +58,18 @@ const updateRecipeById = async (id, recipe, authorization) => {
 };
 
 // remoção de uma receita
-// TODO - implementar validação de usuário (admin/user)
 const deleteRecipe = async (id, authorization) => {
-    const { status, err } = await tokenValidation(authorization);
+    const { status, err } = await permissionValidation(id, authorization);
     if (err) return { status, err };
   
     const deletedRecipe = await models.recipesModel.deleteRecipe(id);
     if (!deletedRecipe) return { status: NO_CONTENT };
 };
 
-// remoção de uma receita pelo id
+// inclusão de imagem na receita
 const includeImage = async (id, authorization) => {
     try {
-        const { status, err } = await tokenValidation(authorization);
+        const { status, err } = await permissionValidation(id, authorization);
         if (err) return { status, err };
 
         const image = `localhost:3000/src/uploads/${id}.jpeg`;

@@ -12,8 +12,8 @@ const tokenValidation = async (token) => {
     const decodedToken = jwt.verify(token, secret);
     const { email } = decodedToken.data;
     const user = await models.usersModel.userByEmail(email);
-    if (!user) return MALFORMED_TOKEN_JWT;
     
+    if (!user) return MALFORMED_TOKEN_JWT;
     return { data: decodedToken.data };
   } catch (error) {
     return MALFORMED_TOKEN_JWT;
