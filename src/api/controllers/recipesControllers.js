@@ -57,10 +57,23 @@ const deleteRecipe = async (req, res) => {
     res.status(status).json();
 };
 
+// endpoint para a remoção de uma receita
+// tem como requisitos : idRecipe, { image.jpeg }
+// precisa estar logado
+const includeImage = async (req, res) => {
+    const { id } = req.params;
+    const { authorization } = req.headers;
+  
+    const { status, includeRecipeImage, err } = await services.recipesService.includeImage(id, authorization);
+    if (err) return res.status(status).json({ message: err.message });
+    res.status(status).json(includeRecipeImage);
+};
+
 module.exports = {
     createRecipe,
     getRecipeList,
     getRecipeById,
     updateRecipeById,
-    deleteRecipe
+    deleteRecipe,
+    includeImage
 };

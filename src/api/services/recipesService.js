@@ -46,7 +46,7 @@ const updateRecipeById = async (id, recipe, authorization) => {
     
         const updateRecipe = await models.recipesModel.updateRecipeById(id, recipe);
         return { status: HTTP_OK_STATUS, updateRecipe };
-    }catch (error) {
+    } catch (error) {
         return REQUEST_INVALID_ENTRIES;
     }
 };
@@ -61,10 +61,26 @@ const deleteRecipe = async (id, authorization) => {
     if (!deletedRecipe) return { status: NO_CONTENT };
 };
 
+// endpoint para a remoção de uma receita
+const includeImage = async (id, authorization) => {
+    try {
+        const { status, err } = await tokenValidation(authorization);
+        if (err) return { status, err };
+
+        const image = `localhost:3000/src/uploads/${id}.jpeg`;
+
+        const includeRecipeImage = await models.recipesModel.includeImage(id, image);
+        return { status: 200, includeRecipeImage };
+    } catch (error) {
+        return REQUEST_INVALID_ENTRIES;
+    }
+};
+
 module.exports = {
     createRecipe,
     getRecipeList,
     getRecipeById,
     updateRecipeById,
-    deleteRecipe
+    deleteRecipe,
+    includeImage
 }
