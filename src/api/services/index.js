@@ -5,5 +5,5 @@ const recipesService = require('./recipesService');
 module.exports = {
     usersService,
     loginService,
-    recipesService
+    recipesService,
 };

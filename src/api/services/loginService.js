@@ -1,8 +1,12 @@
+const { sign } = require('jsonwebtoken');
 const { loginValidation } = require('../schemas');
 const models = require('../models');
-const { sign } = require('jsonwebtoken');
 
-const { UNAUTHORIZED_EMPTY_FIELDS, INVALID_UNAUTHORIZED_DATA, HTTP_OK_STATUS, } = require('../helpers');
+const { 
+  UNAUTHORIZED_EMPTY_FIELDS, 
+  INVALID_UNAUTHORIZED_DATA, 
+  HTTP_OK_STATUS,
+} = require('../helpers');
 
 // endpoint para a validação de login
 // TODO - validar nome
@@ -28,5 +32,5 @@ const login = async (register) => {
 module.exports = {
   login,
   secret,
-  jwtConfig
+  jwtConfig,
 };

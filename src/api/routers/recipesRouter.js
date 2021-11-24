@@ -10,6 +10,7 @@ router.get('/', rescue(controllers.recipesController.getRecipeList));
 router.get('/:id', rescue(controllers.recipesController.getRecipeById));
 router.put('/:id', rescue(controllers.recipesController.updateRecipeById));
 router.delete('/:id', rescue(controllers.recipesController.deleteRecipe));
-router.put('/:id/image/', upload.single('image'), rescue(controllers.recipesController.includeImage));
+router.put('/:id/image/', upload.single('image'), 
+rescue(controllers.recipesController.includeImage));
 
 module.exports = router;

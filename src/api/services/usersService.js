@@ -22,5 +22,5 @@ const createUser = async (newUser, role = 'user') => {
 };
 
 module.exports = {
-  createUser
+  createUser,
 };

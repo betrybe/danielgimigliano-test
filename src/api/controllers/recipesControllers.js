@@ -7,7 +7,11 @@ const createRecipe = async (req, res) => {
     const newRecipe = req.body;
     const { authorization } = req.headers;
     
-    const { status, includeRecipes, err } = await services.recipesService.createRecipe(newRecipe, authorization);
+    const { 
+        status, 
+        includeRecipes, 
+        err,
+    } = await services.recipesService.createRecipe(newRecipe, authorization);
     if (err) return res.status(status).json({ message: err.message });
 
     res.status(status).json({ recipe: includeRecipes });
@@ -24,7 +28,11 @@ const getRecipeList = async (_req, res) => {
 const getRecipeById = async (req, res) => {
     const { id } = req.params;
     
-    const { status, recipe, err } = await services.recipesService.getRecipeById(id);
+    const { 
+        status, 
+        recipe, 
+        err,
+    } = await services.recipesService.getRecipeById(id);
     if (err) return res.status(status).json({ message: err.message });
     
     res.status(status).json(recipe);
@@ -38,7 +46,11 @@ const updateRecipeById = async (req, res) => {
     const recipe = req.body;
     const { authorization } = req.headers;
     
-    const { status, updateRecipe, err } = await services.recipesService.updateRecipeById(id, recipe, authorization);
+    const { 
+        status, 
+        updateRecipe, 
+        err,
+    } = await services.recipesService.updateRecipeById(id, recipe, authorization);
     if (err) return res.status(status).json({ message: err.message });
     
     res.status(status).json(updateRecipe);
@@ -51,7 +63,10 @@ const deleteRecipe = async (req, res) => {
     const { id } = req.params;
     const { authorization } = req.headers;
   
-    const { status, err } = await services.recipesService.deleteRecipe(id, authorization);
+    const { 
+        status, 
+        err,
+    } = await services.recipesService.deleteRecipe(id, authorization);
     if (err) return res.status(status).json({ message: err.message });
     
     res.status(status).json();
@@ -64,7 +79,11 @@ const includeImage = async (req, res) => {
     const { id } = req.params;
     const { authorization } = req.headers;
   
-    const { status, includeRecipeImage, err } = await services.recipesService.includeImage(id, authorization);
+    const { 
+        status, 
+        includeRecipeImage, 
+        err,
+    } = await services.recipesService.includeImage(id, authorization);
     if (err) return res.status(status).json({ message: err.message });
     res.status(status).json(includeRecipeImage);
 };
@@ -75,5 +94,5 @@ module.exports = {
     getRecipeById,
     updateRecipeById,
     deleteRecipe,
-    includeImage
+    includeImage,
 };

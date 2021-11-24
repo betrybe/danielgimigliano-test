@@ -20,5 +20,5 @@ const tokenValidation = async (token) => {
 };
 
 module.exports = { 
-  tokenValidation 
+  tokenValidation,
 };

@@ -16,37 +16,51 @@ const RECIPE_NOT_FOUND_STATUS = 'recipe not found';
 
 const REQUEST_INVALID_ENTRIES = {
     status: HTTP_BAD_REQUEST_STATUS,
-    err: { message: ENTRIES_ERROR }
+    err: { 
+        message: ENTRIES_ERROR,
+    },
 };
 
 const CONFLICT_EMAIL = {
     status: HTTP_CONFLICT_STATUS,
-    err: { message: CONFLICT_EMAIL_ERROR }
+    err: { 
+        message: CONFLICT_EMAIL_ERROR,
+    },
 };
 
 const UNAUTHORIZED_EMPTY_FIELDS = {
     status: HTTP_UNAUTHORIZED_FIELDS,
-    err: { message: MUST_BE_FILLED }
+    err: { 
+        message: MUST_BE_FILLED,
+    },
 };
 
 const INVALID_UNAUTHORIZED_DATA = {
     status: HTTP_UNAUTHORIZED_FIELDS,
-    err: { message: INCORRECT_LOGIN_ERROR }
+    err: { 
+        message: INCORRECT_LOGIN_ERROR,
+    },
 };
 
 const MALFORMED_TOKEN_JWT = {
     status: HTTP_UNAUTHORIZED_FIELDS,
-    err: { message: MALFORMED_TOKEN }
+    err: { 
+        message: MALFORMED_TOKEN,
+    },
 };
 
 const MISSING_AUTH_TOKEN = {
     status: HTTP_UNAUTHORIZED_FIELDS,
-    err: { message: MISSING_AUTH }
+    err: { 
+        message: MISSING_AUTH,
+    },
 };
 
 const RECIPE_NOT_FOUND = {
     status: HTTP_NOT_FOUND,
-    err: { message: RECIPE_NOT_FOUND_STATUS }
+    err: { 
+        message: RECIPE_NOT_FOUND_STATUS,
+    },
 };
 
 module.exports = {
@@ -59,5 +73,5 @@ module.exports = {
     MALFORMED_TOKEN_JWT,
     MISSING_AUTH_TOKEN,
     RECIPE_NOT_FOUND,
-    NO_CONTENT
+    NO_CONTENT,
 };

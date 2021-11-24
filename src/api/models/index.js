@@ -3,5 +3,5 @@ const recipesModel = require('./recipesModel');
 
 module.exports = {
     usersModel,
-    recipesModel
+    recipesModel,
 };

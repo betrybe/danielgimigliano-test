@@ -1,5 +1,5 @@
-const connection = require('./connection');
 const { ObjectId } = require('mongodb');
+const connection = require('./connection');
 
 const COLLECTION_DATA = 'recipes';
 
@@ -56,5 +56,5 @@ module.exports = {
     getRecipeById,
     updateRecipeById,
     deleteRecipe,
-    includeImage
+    includeImage,
 };
