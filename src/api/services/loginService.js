@@ -8,16 +8,14 @@ const {
   HTTP_OK_STATUS,
 } = require('../helpers');
 
-// endpoint para a validação de login
-// TODO - validar nome
-const secret = 'mysecretdetoken';
+const secret = 'secretToken';
 
-// TODO - validar tempo de expiração do token
 const jwtConfig = {
-  expiresIn: '5h',
+  expiresIn: '2h',
   algorithm: 'HS256',
 };
 
+// validação de login
 const login = async (register) => {
   const { error } = loginValidation.validate(register);
   if (error) return UNAUTHORIZED_EMPTY_FIELDS;

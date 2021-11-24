@@ -43,7 +43,7 @@ const getRecipeById = async (id) => {
     return { status: HTTP_OK_STATUS, recipe };
 };
 
-// endpoint para edição de uma receita
+// edição de uma receita
 const updateRecipeById = async (id, recipe, authorization) => {
     try {
         const { status, err } = await tokenValidation(authorization);
@@ -56,7 +56,7 @@ const updateRecipeById = async (id, recipe, authorization) => {
     }
 };
 
-// endpoint para a remoção de uma receita
+// remoção de uma receita
 // TODO - implementar validação de usuário (admin/user)
 const deleteRecipe = async (id, authorization) => {
     const { status, err } = await tokenValidation(authorization);
@@ -66,7 +66,7 @@ const deleteRecipe = async (id, authorization) => {
     if (!deletedRecipe) return { status: NO_CONTENT };
 };
 
-// endpoint para a remoção de uma receita
+// remoção de uma receita pelo id
 const includeImage = async (id, authorization) => {
     try {
         const { status, err } = await tokenValidation(authorization);

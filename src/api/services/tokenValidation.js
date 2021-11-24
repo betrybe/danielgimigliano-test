@@ -4,6 +4,7 @@ const { secret } = require('./loginService');
 
 const { MALFORMED_TOKEN_JWT, MISSING_AUTH_TOKEN } = require('../helpers');
 
+// validação do token de autenticação
 const tokenValidation = async (token) => {
   if (!token) return MISSING_AUTH_TOKEN;
   
