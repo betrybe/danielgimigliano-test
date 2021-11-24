@@ -72,7 +72,7 @@ const deleteRecipe = async (req, res) => {
     res.status(status).json();
 };
 
-// endpoint para a remoção de uma receita
+// endpoint para a inclusão de imagem em uma receita
 // tem como requisitos : idRecipe, { image.jpeg }
 // precisa estar logado
 const includeImage = async (req, res) => {
