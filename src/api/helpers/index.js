@@ -5,6 +5,7 @@ const HTTP_UNAUTHORIZED_FIELDS = 401;
 const HTTP_OK_STATUS = 200;
 const HTTP_NOT_FOUND = 404;
 const NO_CONTENT = 204;
+const FORBIDDEN_ACCESS = 403;
 
 const ENTRIES_ERROR = 'Invalid entries. Try again.';
 const CONFLICT_EMAIL_ERROR = 'Email already registered';
@@ -13,6 +14,7 @@ const INCORRECT_LOGIN_ERROR = 'Incorrect username or password';
 const MALFORMED_TOKEN = 'jwt malformed';
 const MISSING_AUTH = 'missing auth token';
 const RECIPE_NOT_FOUND_STATUS = 'recipe not found';
+const ACCESS_DENIED = 'Only admins can register new admins';
 
 const REQUEST_INVALID_ENTRIES = {
     status: HTTP_BAD_REQUEST_STATUS,
@@ -63,6 +65,13 @@ const RECIPE_NOT_FOUND = {
     },
 };
 
+const FORBIDDEN_ACCESS_STATUS = {
+    status: FORBIDDEN_ACCESS,
+    err: { 
+        message: ACCESS_DENIED,
+    },
+};
+
 module.exports = {
     REQUEST_INVALID_ENTRIES,
     CONFLICT_EMAIL,
@@ -74,4 +83,5 @@ module.exports = {
     MISSING_AUTH_TOKEN,
     RECIPE_NOT_FOUND,
     NO_CONTENT,
+    FORBIDDEN_ACCESS_STATUS,
 };

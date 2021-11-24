@@ -11,6 +11,24 @@ const createUser = async (req, res) => {
     res.status(status).json({ user: includeNewUser });
 };
 
+// criação de usuário admin
+// tem como requisitos : name, email, password
+// precisa estar logado
+const createUserAdmin = async (req, res) => {
+    const newUser = req.body;
+    const { authorization } = req.headers;
+    
+    const { 
+        status, 
+        err, 
+        includeNewUser,
+    } = await services.usersService.createUserAdmin(newUser, authorization);
+    if (err) return res.status(status).json({ message: err.message });
+    
+    res.status(status).json({ user: includeNewUser });
+};
+
 module.exports = { 
     createUser,
+    createUserAdmin,
 };
