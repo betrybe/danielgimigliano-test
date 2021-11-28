@@ -1,0 +1,6 @@
+{
+    "login_successfully" : {
+        "email" : "user-test@email.com",
+        "password" : "passwd"
+    }
+}
