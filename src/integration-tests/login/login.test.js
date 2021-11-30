@@ -12,6 +12,11 @@ const {
     invalid_password,
 } = require('../fixtures/login.mock.json');
 
+const { 
+    UNAUTHORIZED_EMPTY_FIELDS,
+    INVALID_UNAUTHORIZED_DATA
+} = require('../../api/helpers');
+
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const sinon = require('sinon');
@@ -78,7 +83,7 @@ describe('Login do usuário - POST /login', () => {
         });
 
         it('Retorno esperando a seguinte message', () => {
-            expect(response.body.message).to.be.equals('All fields must be filled');
+            expect(response.body.message).to.be.equals(UNAUTHORIZED_EMPTY_FIELDS.err.message);
         });
     });
 
@@ -104,7 +109,7 @@ describe('Login do usuário - POST /login', () => {
         });
 
         it('Retorno esperando a seguinte message', () => {
-            expect(response.body.message).to.be.equals('All fields must be filled');
+            expect(response.body.message).to.be.equals(UNAUTHORIZED_EMPTY_FIELDS.err.message);
         });
     });
 
@@ -130,7 +135,7 @@ describe('Login do usuário - POST /login', () => {
         });
 
         it('Retorno esperando a seguinte message', () => {
-            expect(response.body.message).to.be.equals('Incorrect username or password');
+            expect(response.body.message).to.be.equals(INVALID_UNAUTHORIZED_DATA.err.message);
         });
     });
 
@@ -156,7 +161,7 @@ describe('Login do usuário - POST /login', () => {
         });
 
         it('Retorno esperando a seguinte message', () => {
-            expect(response.body.message).to.be.equals('Incorrect username or password');
+            expect(response.body.message).to.be.equals(INVALID_UNAUTHORIZED_DATA.err.message);
         });
     });
 });
