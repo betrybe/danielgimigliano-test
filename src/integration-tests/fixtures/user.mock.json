@@ -3,5 +3,17 @@
         "name": "user-test",
         "email": "user-test@email.com",
         "password": "passwd"
+    },
+    
+    "new_user" : {
+        "name": "user-test",
+        "email": "user-test2@email.com",
+        "password": "passwd"
+    },
+
+    "invalid_user" : {
+        "name": "invalid_user",
+        "email": "invalid_user@email.com",
+        "password": ""
     }
 }
