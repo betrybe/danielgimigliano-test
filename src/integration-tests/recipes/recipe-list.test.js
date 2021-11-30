@@ -52,7 +52,7 @@ describe('Listagem de receita - GET /recipes', () => {
             expect(response).to.have.status(200);
         });
 
-        it('Object esperado - array', () => {
+        it('Retorno esperado - array', () => {
             expect(response.body).to.be.an('array');
         });
 
@@ -77,7 +77,7 @@ describe('Listagem de receita - GET /recipes', () => {
             expect(response).to.have.status(200);
         });
 
-        it('Object esperado - array', () => {
+        it('Retorno esperado - array', () => {
             expect(response.body).to.be.an('array');
         });
 
