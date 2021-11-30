@@ -1,7 +1,7 @@
 {
     "valid_user" : {
         "name": "user-test",
-        "email": "user-teste@email.com",
+        "email": "user-test@email.com",
         "password": "passwd"
     }
 }
