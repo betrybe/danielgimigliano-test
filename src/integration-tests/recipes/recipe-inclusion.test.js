@@ -42,6 +42,7 @@ describe('Inclusão de receita - POST /recipes', () => {
 
     after(async () => {
         await connect.collection('users').deleteMany({});
+        await connect.collection('recipes').deleteMany({});
         MongoClient.connect.restore();
     });
 
