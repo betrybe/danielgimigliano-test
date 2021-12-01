@@ -3,5 +3,26 @@
         "name": "leite em pó",
         "ingredients": "leite em pó, água e um recipiente",
         "preparation": "misturar leite em pó e a água"
+    },
+
+    "invalid_name" : {
+        "ingredients": "leite em pó, água e um recipiente",
+        "preparation": "misturar leite em pó e a água"
+    },
+
+    "invalid_ingredients" : {
+        "name": "leite em pó",
+        "preparation": "misturar leite em pó e a água"
+    },
+
+    "invalid_preparation" : {
+        "name": "leite em pó",
+        "ingredients": "leite em pó, água e um recipiente"
+    },
+
+    "update_recipe" : {
+        "name": "leite em pó com morango",
+        "ingredients": "leite em pó, água, morango e liquidificador",
+        "preparation": "misturar o leite em pó, a água e o morango no liquidificador"
     }
 }

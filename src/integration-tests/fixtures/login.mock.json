@@ -2,5 +2,23 @@
     "login_successfully" : {
         "email" : "user-test@email.com",
         "password" : "passwd"
+    },
+
+    "missing_email" : {
+        "password" : "passwd"
+    },
+
+    "missing_password" : {
+        "email" : "user-test@email.com"
+    },
+
+    "invalid_email" : {
+        "email" : "user@email.com",
+        "password" : "passwd"
+    },
+
+    "invalid_password" : {
+        "email" : "user-test@email.com",
+        "password" : "password"
     }
 }

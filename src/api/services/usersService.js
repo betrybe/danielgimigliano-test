@@ -1,6 +1,8 @@
 const models = require('../models');
 const { userValidation } = require('../schemas');
 const { tokenValidation } = require('./tokenValidation');
+const { roles } = require('../enums');
+
 const { 
   REQUEST_INVALID_ENTRIES, 
   CONFLICT_EMAIL, 
@@ -9,7 +11,7 @@ const {
 } = require('../helpers');
 
 // criação de usuário
-const createUser = async (newUser, role = 'user') => {
+const createUser = async (newUser, role = roles.user.user) => {
     const { email } = newUser;
     
     const { error } = userValidation.validate(newUser);
@@ -32,7 +34,7 @@ const createUserAdmin = async (newUser, authorization) => {
   const { status, err, data } = await tokenValidation(authorization);
   if (err) return { status, err };
 
-  if (data.role === 'admin') {
+  if (data.role === roles.user.admin) {
     return createUser(newUser, data.role);
   }
 

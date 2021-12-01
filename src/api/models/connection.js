@@ -1,8 +1,7 @@
 const { MongoClient } = require('mongodb');
 require('dotenv').config();
+const config = require('../config');
 
-const DB_NAME = 'Cookmaster';
-const MONGO_DB_URL = process.env.MONGO_DB_URL || 'mongodb://mongodb:27017/Cookmaster';
 const OPTIONS = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -11,9 +10,9 @@ const OPTIONS = {
 let db = null;
 const connection = () => (db
     ? Promise.resolve(db)
-    : MongoClient.connect(MONGO_DB_URL, OPTIONS)
+    : MongoClient.connect(config.mongodbUrl, OPTIONS)
       .then((conn) => {
-        db = conn.db(DB_NAME);
+        db = conn.db(config.dbName);
         return db;
       }));
 

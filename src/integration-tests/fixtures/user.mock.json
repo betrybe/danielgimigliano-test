@@ -1,7 +1,32 @@
 {
     "valid_user" : {
         "name": "user-test",
-        "email": "user-teste@email.com",
+        "email": "user-test@email.com",
+        "password": "passwd"
+    },
+    
+    "new_user" : {
+        "name": "user-test",
+        "email": "user-test2@email.com",
+        "password": "passwd"
+    },
+
+    "invalid_user" : {
+        "name": "invalid_user",
+        "email": "invalid_user@email.com",
+        "password": ""
+    },
+
+    "admin_user" : {
+        "name": "user-admin",
+        "email": "user-admin@email.com",
+        "password": "passwd",
+        "role": "admin"
+    },
+
+    "new_admin" : {
+        "name": "user-admin",
+        "email": "user-admin2@email.com",
         "password": "passwd"
     }
 }
