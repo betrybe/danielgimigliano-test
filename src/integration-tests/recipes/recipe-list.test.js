@@ -60,6 +60,12 @@ describe('Listagem de receita - GET /recipes', () => {
             expect(response.body[0]).to.have.all
                 .keys('name', 'ingredients', 'preparation', 'userId', '_id');
         });
+
+        it('Conteúdo esperado', () => {
+            expect(response.body[0].name).to.be.equal(valid_recipe.name);
+            expect(response.body[0].ingredients).to.be.equal(valid_recipe.ingredients);
+            expect(response.body[0].preparation).to.be.equal(valid_recipe.preparation);
+        });
     });
 
     describe('Será validado que é possível buscar uma lista de receitas vazia e com token', () => {

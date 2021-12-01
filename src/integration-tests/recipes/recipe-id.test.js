@@ -65,6 +65,12 @@ describe('Buscar uma receita - GET /recipes', () => {
             expect(response.body).to.have.all
                 .keys('name', 'ingredients', 'preparation', 'userId', '_id');
         });
+
+        it('Conteúdo esperado', () => {
+            expect(response.body.name).to.be.equal(valid_recipe.name);
+            expect(response.body.ingredients).to.be.equal(valid_recipe.ingredients);
+            expect(response.body.preparation).to.be.equal(valid_recipe.preparation);
+        });
     });
 
     describe('Será validado que não é possível listar uma receita que não existe', () => {

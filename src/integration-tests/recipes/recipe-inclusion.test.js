@@ -73,6 +73,12 @@ describe('Inclusão de receita - POST /recipes', () => {
             expect(response.body.recipe).to.have.all
                 .keys('name', 'ingredients', 'preparation', 'userId', '_id');
         });
+
+        it('Conteúdo esperado', () => {
+            expect(response.body.recipe.name).to.be.equal(valid_recipe.name);
+            expect(response.body.recipe.ingredients).to.be.equal(valid_recipe.ingredients);
+            expect(response.body.recipe.preparation).to.be.equal(valid_recipe.preparation);
+        });
     });
 
     describe('Será validado que não é possível cadastrar receita sem o campo "name"', () => {
