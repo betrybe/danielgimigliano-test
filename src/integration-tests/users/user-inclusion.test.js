@@ -1,4 +1,5 @@
 const app = require("../../api/app");
+const { roles } = require("../../api/enums");
 
 const { MongoClient } = require('mongodb');
 const connection = require("../../api/models/connection");
@@ -64,7 +65,7 @@ describe('Cadastro de usuário - POST /users', () => {
         });
 
         it('Conteúdo do role esperado - user', () => {
-            expect(response.body.user.role).to.be.equal('user');
+            expect(response.body.user.role).to.be.equal(roles.user.user);
         });
     });
 

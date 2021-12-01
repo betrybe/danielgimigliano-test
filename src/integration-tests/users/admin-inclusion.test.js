@@ -1,4 +1,5 @@
 const app = require("../../api/app");
+const { roles } = require("../../api/enums");
 
 const { MongoClient } = require('mongodb');
 const connection = require("../../api/models/connection");
@@ -74,7 +75,7 @@ describe('Cadastro de admin - POST /users/admin', () => {
         });
 
         it('Conteúdo do role esperado - admin', () => {
-            expect(response.body.user.role).to.be.equal('admin');
+            expect(response.body.user.role).to.be.equal(roles.user.admin);
         });
     });
 
