@@ -1,7 +1,6 @@
-const config = require('../config');
-
 const { MongoClient } = require('mongodb');
 require('dotenv').config();
+const config = require('../config');
 
 const OPTIONS = {
   useNewUrlParser: true,
@@ -11,9 +10,9 @@ const OPTIONS = {
 let db = null;
 const connection = () => (db
     ? Promise.resolve(db)
-    : MongoClient.connect(config.mongodb_url, OPTIONS)
+    : MongoClient.connect(config.mongodbUrl, OPTIONS)
       .then((conn) => {
-        db = conn.db(config.name);
+        db = conn.db(config.dbName);
         return db;
       }));
 

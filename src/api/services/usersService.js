@@ -1,7 +1,7 @@
 const models = require('../models');
 const { userValidation } = require('../schemas');
 const { tokenValidation } = require('./tokenValidation');
-const { roles } = require("../../api/enums");
+const { roles } = require('../enums');
 
 const { 
   REQUEST_INVALID_ENTRIES, 
